@@ -171,7 +171,7 @@ lazy val delayedqueueJVM = project
       // JDBC drivers for testing
       "com.h2database" % "h2" % "2.4.240" % Test,
       "org.hsqldb" % "hsqldb" % "2.7.4" % Test,
-      "org.xerial" % "sqlite-jdbc" % "3.51.1.0" % Test
+      "org.xerial" % "sqlite-jdbc" % "3.51.1.1" % Test
     )
   )
 
