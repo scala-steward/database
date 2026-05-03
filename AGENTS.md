@@ -40,7 +40,14 @@ This will generate these reports:
   - `./delayedqueue-jvm/build/dependencyUpdates/report.html`
 - For the Scala project:
   - `./target/dependency-updates.txt`
+  - `./project/target/dependency-updates.txt` (sbt plugins)
   - `./delayedqueue-scala/target/dependency-updates.txt`
+
+RULES: 
+- Never upgrade major versions (semver), instead ask the user or warn them!!!
+- Never upgrade to SNAPSHOT, RC, or milestone versions.
+- Scala sub-project must support both 2.13.x and 3.x.
+- Fix breakage, but apply good judgement.
 
 ## References
 

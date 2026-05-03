@@ -12,7 +12,9 @@ coverage:
 
 dependency-updates-ci:
 	./gradlew dependencyUpdates --no-parallel -Drevision=release -DoutputFormatter=html --refresh-dependencies && \
-	./sbt dependencyUpdatesReport
+	mkdir -p ~/.sbt/1.0/plugins && \
+	( test -f ~/.sbt/1.0/plugins/sbt-updates.sbt || echo 'addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.4")' > ~/.sbt/1.0/plugins/sbt-updates.sbt ) && \
+	./sbt ";dependencyUpdatesReport ;reload plugins; dependencyUpdatesReport"
 
 dependency-updates:
 	./gradlew dependencyUpdates \
