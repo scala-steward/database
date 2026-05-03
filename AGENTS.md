@@ -26,6 +26,22 @@ Before working on code, identify which project you're in and consult its guide:
 - **Binary compatibility**: Do not change or remove published public members; add overloads instead.
 - **Code quality**: Maintain full test coverage; tests must be clean and easy to read.
 
+## HOW-TOs
+
+### Update project's dependencies
+
+```bash
+make dependency-updates-ci
+```
+
+This will generate these reports:
+- For the Gradle project(s):
+  - `./build/dependencyUpdates/report.html
+  - `./delayedqueue-jvm/build/dependencyUpdates/report.html`
+- For the Scala project:
+  - `./target/dependency-updates.txt`
+  - `./delayedqueue-scala/target/dependency-updates.txt`
+
 ## References
 
 - Project documentation: `docs/`

@@ -10,6 +10,10 @@ coverage:
 	@echo "Coverage report generated at: jvm/build/reports/kover/html/index.html"
 	@echo "To view: open jvm/build/reports/kover/html/index.html"
 
+dependency-updates-ci:
+	./gradlew dependencyUpdates --no-parallel -Drevision=release -DoutputFormatter=html --refresh-dependencies && \
+	./sbt dependencyUpdatesReport
+
 dependency-updates:
 	./gradlew dependencyUpdates \
 		--no-parallel \
