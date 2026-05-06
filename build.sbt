@@ -119,7 +119,7 @@ val sharedSettings = Seq(
     // will be put into the FILE_SOURCE variable, which is
     // definitely not what we want.
     "-sourcepath",
-    file(".").getAbsolutePath.replaceAll("[.]$", ""),
+    file(".").getAbsolutePath.replaceAll("[.]$", "")
   ) ++ {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((3, _)) => Seq.empty
@@ -174,7 +174,7 @@ lazy val delayedqueueJVM = project
       // JDBC drivers for testing
       "com.h2database" % "h2" % "2.4.240" % Test,
       "org.hsqldb" % "hsqldb" % "2.7.4" % Test,
-      "org.xerial" % "sqlite-jdbc" % "3.53.0.0" % Test
+      "org.xerial" % "sqlite-jdbc" % "3.53.1.0" % Test
     )
   )
 
