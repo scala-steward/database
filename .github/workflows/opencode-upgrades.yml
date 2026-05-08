@@ -32,4 +32,5 @@ jobs:
         with:
           model: opencode-go/deepseek-v4-pro
           prompt: |
-            Upgrade the project's dependencies according to the recipe in AGENTS.md
+            Upgrade the project's dependencies according to the recipe in this file:
+            ./.github/prompts/upgrades.md

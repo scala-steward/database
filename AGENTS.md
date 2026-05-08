@@ -26,29 +26,6 @@ Before working on code, identify which project you're in and consult its guide:
 - **Binary compatibility**: Do not change or remove published public members; add overloads instead.
 - **Code quality**: Maintain full test coverage; tests must be clean and easy to read.
 
-## HOW-TOs
-
-### Update project's dependencies
-
-```bash
-make dependency-updates-ci
-```
-
-This will generate these reports:
-- For the Gradle project(s):
-  - `./build/dependencyUpdates/report.html
-  - `./delayedqueue-jvm/build/dependencyUpdates/report.html`
-- For the Scala project:
-  - `./target/dependency-updates.txt`
-  - `./project/target/dependency-updates.txt` (sbt plugins)
-  - `./delayedqueue-scala/target/dependency-updates.txt`
-
-RULES: 
-- Never upgrade major versions (semver), instead ask the user or warn them!!!
-- Never upgrade to SNAPSHOT, RC, or milestone versions.
-- Scala sub-project must support both 2.13.x and 3.x.
-- Fix breakage, but apply good judgement.
-
 ## References
 
 - Project documentation: `docs/`
