@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      contents: read
-      pull-requests: read
-      issues: read
+      contents: write
+      pull-requests: write
+      issues: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -25,14 +25,17 @@ jobs:
           distribution: temurin
       - uses: sbt/setup-sbt@v1
 
+      - name: Load prompt file
+        id: load-prompt
+        run: |
+          echo "content<<EOF" >> $GITHUB_OUTPUT
+          cat .github/prompts/upgrades.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Run opencode
         uses: anomalyco/opencode/github@latest
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
         with:
           model: opencode-go/deepseek-v4-pro
-          prompt: |
-            Upgrade the project's dependencies according to the recipe in this file:
-            {PROJECT_ROOT}/.github/prompts/upgrades.md
-
-            Respect the requirements to the letter!
+          prompt: ${{ steps.load-prompt.outputs.content }}

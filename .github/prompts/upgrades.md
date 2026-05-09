@@ -1,29 +1,8 @@
-# Upgrade dependencies
+Upgrade this project's dependencies.
 
-## Hard Requirements 
+It's important that you respect the following requirements to the letter!
 
-  * Only consider stable, minor versions (semver), concern being API compatibility
-    * Testing dependencies, build tools or plugins can be upgraded to any stable version
-  * The Scala project must support both Scala 2.13.x and Scala 3.x.x
-    so only minor versions should be considered (e.g., 2.13.x -> 3.x.x is a false positive)
-  * Fix code breakage, but carefully, we MUST NOT break public API compatibility
-  * Respect AGENTS.md
-  * Work is not over until `make check-all` passes! (acceptance criteria)
-
-# Communication guidelines
-
-In case there are updates, create a PR such that:
-- Title of PR must be "Upgrade dependencies" (no other junk)
-- Description contains:
-  - the list of dependencies that were upgraded
-  - the list of dependencies that couldn't be upgraded (major versions that break compat)
-  - other details you deem relevant
-
-In case there are no updates, such that no PR can be created, then a comment
-with the status on this issue (this is the way you communicate with the
-project's maintainers): https://github.com/funfix/database/issues/52
-
-## How-to
+## How-to find latest versions
 
 To update the project's dependencies, first execute this command:
 
@@ -54,3 +33,34 @@ You can also upgrade Gradle, but you need to take care of any deprecations
 ```
 ./gradlew wrapper --gradle-version latest
 ```
+
+The real dependency and build tool versions are declared in these files, so
+inspect and update them as appropriate:
+- `gradle/libs.versions.toml`
+- `settings.gradle.kts`
+- `gradle/wrapper/gradle-wrapper.properties`
+- `build.sbt`
+- `project/plugins.sbt`
+- `project/build.properties`
+
+## Hard Requirements
+
+* Only consider stable, minor versions (semver), concern being API compatibility
+  * Testing dependencies, build tools or plugins can be upgraded to any stable version
+* The Scala project must support both Scala 2.13.x and Scala 3.x.x
+  so only minor versions should be considered (e.g., 2.13.x -> 3.x.x is a false positive)
+* Fix code breakage, but carefully, we MUST NOT break public API compatibility
+* Respect AGENTS.md
+* Work is not over until `make check-all` passes! (acceptance criteria)
+
+## Communication requirements
+
+In case there are updates, create a PR such that:
+- Title of PR MUST BE "Upgrade dependencies: <list>"
+- Description of PR MUST CONTAIN:
+  - the list of dependencies that were upgraded
+  - the list of dependencies that couldn't be upgraded
+    - runtime/library major versions skipped for API compatibility
+  - other details you deem relevant (like code fixes)
+
+In case there are no updates, such that no PR can be created, then a comment with the status on this issue (this is the way you communicate with the project's maintainers): https://github.com/funfix/database/issues/52
